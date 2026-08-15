@@ -1,10 +1,9 @@
 # scry_olap
 
-The `olap` kind for [Scry](https://github.com/joetjen/scry)
-(lang_spec.md §2/§7) — a `scry_<kind>` package (impl_spec.md §2), but a
+The `olap` kind for Scry — a `scry_<kind>` package, but a
 **degenerate** one, the same shape as
 [`scry_relational`](https://github.com/joetjen/scry_relational): `olap`
-has no EP1/EP2 vocabulary of its own. lang_spec.md says so directly:
+has no EP1/EP2 vocabulary of its own. This is by design:
 *"`relational` and `olap` are core-only kinds today — no
 grammar-contributing variant, because nothing beyond core's shared
 vocabulary has been needed for them."*
@@ -21,11 +20,11 @@ module exists here the way `scry_time_series` has its own.
 declaration with zero code from this package (`Scry.Core.TypeCheck`'s
 own `@degenerate_kinds ["relational", "olap"]`). So what does this
 package add? Two real things: a canonical dependency name an
-analytical application declares (`{:scry_olap, "~> 0.1"}`, matching
-impl_spec.md §5's own consumption model), and `Scry.Olap.parse/1`,
-which mirrors every other `scry_<kind>`'s own `<Kind>.parse/1` entry
-point — a direct, permanent delegation to `Scry.Core.parse/1`, not a
-placeholder for grammar work that hasn't landed.
+analytical application declares (`{:scry_olap, "~> 0.1"}`), and
+`Scry.Olap.parse/1`, which mirrors every other `scry_<kind>`'s own
+`<Kind>.parse/1` entry point — a direct, permanent delegation to
+`Scry.Core.parse/1`, not a placeholder for grammar work that hasn't
+landed.
 
 No `scry_test_olap` package exists either —
 [`scry_test_core`](https://github.com/joetjen/scry_test_core) already
@@ -33,9 +32,8 @@ exercises exactly this grammar (core's own baseline, byte-identical to
 olap's own, `ROLLUP`/`CUBE` included), so a second, duplicate fixture
 package would add nothing genuinely new to test against.
 
-Source: <https://github.com/joetjen/scry_olap>. Specs live in the
-separate [`scry`](https://github.com/joetjen/scry) repository; the
-grammar/type-check machinery this delegates to lives in
+Source: <https://github.com/joetjen/scry_olap>. The grammar/type-check
+machinery this delegates to lives in
 [`scry_core`](https://github.com/joetjen/scry_core).
 
 ## Usage

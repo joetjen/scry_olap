@@ -43,11 +43,10 @@ defmodule Scry.Olap.MixProject do
       # scry_core isn't published to Hex yet. Real, unscoped -- not
       # only: :test -- since Scry.Olap.parse/1 calls Scry.Core.parse/1
       # at runtime; unlike scry_time_series, there is no grammar
-      # fragment to compose here at all (olap is a degenerate kind,
-      # lang_spec.md §2/§7 -- see Scry.Olap's own moduledoc, and
-      # scry_relational's own identical reasoning). Switch to a
-      # `~> x.y` Hex requirement once scry_core is actually published
-      # (impl_spec.md's own dependency-versions convention).
+      # fragment to compose here at all (olap is a degenerate kind --
+      # see Scry.Olap's own moduledoc, and scry_relational's own
+      # identical reasoning). Switch to a `~> x.y` Hex requirement once
+      # scry_core is actually published.
       {:scry_core, path: "../scry_core"},
 
       # === CODE QUALITY & STATIC ANALYSIS ===
@@ -86,7 +85,7 @@ defmodule Scry.Olap.MixProject do
   end
 
   defp description do
-    "The OLAP kind for Scry (lang_spec.md §2/§7) -- a degenerate kind with no grammar of " <>
+    "The OLAP kind for Scry -- a degenerate kind with no grammar of " <>
       "its own; Scry.Olap.parse/1 delegates directly to Scry.Core.parse/1."
   end
 
